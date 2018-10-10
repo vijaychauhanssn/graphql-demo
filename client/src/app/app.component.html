@@ -19,7 +19,7 @@
     <!-- Modal Template of New User Form -->
     <ng-template #template>
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Create New Employee</h4>
+        <h4 class="modal-title pull-left">Add New Employee</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -27,11 +27,23 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="name">User Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Name" [(ngModel)]="name">
+            <label for="name">Emp Name</label>
+            <input type="text" class="form-control" name="name"  placeholder="First Name" [(ngModel)]="name">
           </div>
-          <button type="button" class="btn btn-default" *ngIf="!user.id" (click)="createUser(name);">Create</button>
-          <button type="button" class="btn btn-default" *ngIf="user.id" (click)="updateUser(name);">Update</button>
+          <div class="form-group">
+            <label for="lname">Emp Last Name</label>
+            <input type="text" class="form-control" name="lname"  placeholder="Last Name" [(ngModel)]="lname">
+          </div>
+          <div class="form-group">
+            <label for="address">Emp Address</label>
+            <input type="text" class="form-control" name="address"  placeholder="Address" [(ngModel)]="address">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phome</label>
+            <input type="number" class="form-control" name="phone"  placeholder="Phone" [(ngModel)]="phone">
+          </div>
+          <button type="button" class="btn btn-primary" *ngIf="!user.id" (click)="createUser(name, lname, address, phone);">Create</button>
+          <button type="button" class="btn btn-default" *ngIf="user.id" (click)="updateUser(name, lname, address, phone);">Update</button>
         </form>
       </div>
     </ng-template>
@@ -42,7 +54,10 @@
       <thead >
         <tr>
           <th class="text-center table-primary">Emp Id</th>
-          <th class="text-center">Emp First</th>
+          <th class="text-center">Emp First Name</th>
+          <th class="text-center">Emp Last Name</th>
+          <th class="text-center">Emp Address</th>
+          <th class="text-center">Emp Phone</th>
           <th class="text-center">Edit</th>
           <th class="text-center">Delete</th>
         </tr>
@@ -51,6 +66,9 @@
         <tr *ngFor="let user of users; let i = index">
           <td class="table-info">{{ i+1 }}</td>
           <td class="table-warning">{{ user.name }}</td>
+          <td class="table-success">{{user.lname}}</td>
+          <td class="table-success">{{user.address}}</td>
+          <td class="table-success">{{user.phone}}</td>
           <td  class="table-success">
             <!-- Show Edit User Form  -->
             <button class="btn btn-dark " (click)="showEditUserForm(user, template)">

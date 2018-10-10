@@ -16,24 +16,27 @@ export class AppComponent {
   users: Array<any> = []; // List of Users
   user: any = {};
   name: any;
+  lname:any;
+  address:any;
+  phone:any;
 
   constructor(private apollo: Apollo,
     private modalService: BsModalService) { }
-
   ngOnInit() {
     this.getUsers();
   }
-
   /**
    * Create User
    * @param value     Name of User
    */
-  createUser(value) {
-    this.apollo
-      .mutate({
+  createUser(value, value2, value3, value4) {
+    this.apollo.mutate({
         mutation: Query.addUser,
         variables: {
-          name: value
+          name: value,
+          lname: value2,
+          address: value3,
+          phone: value4
         },
         update: (proxy, { data: { addUser } }) => {
           // Read the data from our cache for this query.
@@ -54,11 +57,10 @@ export class AppComponent {
 
   /**
    * Remove User
-   * @param id 
+    * @param id 
    */
   removeUser(id) {
-    this.apollo
-      .mutate({
+    this.apollo.mutate({
         mutation: Query.removeUser,
         variables: {
           id: id
@@ -66,7 +68,6 @@ export class AppComponent {
         update: (proxy, { data: { removeUser } }) => {
           // Read the data from our cache for this query.
           const data: any = proxy.readQuery({ query: Query.Users });
-
           var index = data.users.map(function (x) { return x.id; }).indexOf(id);
 
           data.users.splice(index, 1);
@@ -89,6 +90,9 @@ export class AppComponent {
    */
   showEditUserForm(user, template) {
     this.name = user.name;
+    this.lname = user.lname;
+    this.address = user.address;
+    this.phone = user.phone;
     this.user = user;
     this.modalRef = this.modalService.show(template);
   }
@@ -103,7 +107,10 @@ export class AppComponent {
         mutation: Query.updateUser,
         variables: {
           id: this.user.id,
-          name: user
+          name: user,
+          lname: user,
+          address: user,
+          phone: user,
         },
         update: (proxy, { data: { updateUser } }) => {
           // Read the data from our cache for this query.
@@ -141,6 +148,9 @@ export class AppComponent {
   // Open Modal
   openModal(template: TemplateRef<any>) {
     this.name = '';
+    this.lname = '';
+    this.address = '';
+    this.phone = '';
     this.user = {};
     this.modalRef = this.modalService.show(template);
   }

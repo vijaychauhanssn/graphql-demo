@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"jumbotron\">\n    <h1>GraphQL, NodeJs, Express, MongoDB, Angular (v6)</h1>      \n  </div>\n  <div class=\"col-md-12\">\n    <div class=\"row pb-5\">\n      <div class=\"col-md-6 float-left\">\n        <h3>Employee List</h3>\n      </div>\n      <div class=\"col-md-6 float-right\">\n        <!-- Create New User  -->\n        <button type=\"button\" class=\"btn btn-primary pull-right\" (click)=\"openModal(template)\">\n        Add Employee  <span class=\"lnr lnr-plus-circle\"></span>\n        </button>\n\n      </div>\n    </div>\n\n    <!-- Modal Template of New User Form -->\n    <ng-template #template>\n      <div class=\"modal-header\">\n        <h4 class=\"modal-title pull-left\">Create New Employee</h4>\n        <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <form>\n          <div class=\"form-group\">\n            <label for=\"name\">User Name</label>\n            <input type=\"text\" class=\"form-control\" name=\"name\" placeholder=\"Name\" [(ngModel)]=\"name\">\n          </div>\n          <button type=\"button\" class=\"btn btn-default\" *ngIf=\"!user.id\" (click)=\"createUser(name);\">Create</button>\n          <button type=\"button\" class=\"btn btn-default\" *ngIf=\"user.id\" (click)=\"updateUser(name);\">Update</button>\n        </form>\n      </div>\n    </ng-template>\n\n    <!-- List of All Users  -->\n  \n    <table class=\"table table-bordered table-striped table-hover\">\n      <thead >\n        <tr>\n          <th class=\"text-center table-primary\">Emp Id</th>\n          <th class=\"text-center\">Emp First</th>\n          <th class=\"text-center\">Edit</th>\n          <th class=\"text-center\">Delete</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let user of users; let i = index\">\n          <td class=\"table-info\">{{ i+1 }}</td>\n          <td class=\"table-warning\">{{ user.name }}</td>\n          <td  class=\"table-success\">\n            <!-- Show Edit User Form  -->\n            <button class=\"btn btn-dark \" (click)=\"showEditUserForm(user, template)\">\n              <span class=\"lnr lnr-pencil\"></span>\n            </button>\n          </td>\n           <td class=\"table-danger\">\n            <!-- Remove User  -->\n            <button class=\"btn btn-danger\" (click)=\"removeUser(user.id)\">\n              <span class=\"lnr lnr-trash\"></span>\n            </button>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\r\n  <div class=\"jumbotron\">\r\n    <h1>GraphQL, NodeJs, Express, MongoDB, Angular (v6)</h1>      \r\n  </div>\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row pb-5\">\r\n      <div class=\"col-md-6 float-left\">\r\n        <h3>Employee List</h3>\r\n      </div>\r\n      <div class=\"col-md-6 float-right\">\r\n        <!-- Create New User  -->\r\n        <button type=\"button\" class=\"btn btn-primary pull-right\" (click)=\"openModal(template)\">\r\n        Add Employee  <span class=\"lnr lnr-plus-circle\"></span>\r\n        </button>\r\n\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Modal Template of New User Form -->\r\n    <ng-template #template>\r\n      <div class=\"modal-header\">\r\n        <h4 class=\"modal-title pull-left\">Add New Employee</h4>\r\n        <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <form>\r\n          <div class=\"form-group\">\r\n            <label for=\"name\">Emp Name</label>\r\n            <input type=\"text\" class=\"form-control\" name=\"name\"  placeholder=\"First Name\" [(ngModel)]=\"name\">\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"lname\">Emp Last Name</label>\r\n            <input type=\"text\" class=\"form-control\" name=\"lname\"  placeholder=\"Last Name\" [(ngModel)]=\"lname\">\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"address\">Emp Address</label>\r\n            <input type=\"text\" class=\"form-control\" name=\"address\"  placeholder=\"Address\" [(ngModel)]=\"address\">\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"phone\">Phome</label>\r\n            <input type=\"number\" class=\"form-control\" name=\"phone\"  placeholder=\"Phone\" [(ngModel)]=\"phone\">\r\n          </div>\r\n          <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"!user.id\" (click)=\"createUser(name, lname, address, phone);\">Create</button>\r\n          <button type=\"button\" class=\"btn btn-default\" *ngIf=\"user.id\" (click)=\"updateUser(name, lname, address, phone);\">Update</button>\r\n        </form>\r\n      </div>\r\n    </ng-template>\r\n\r\n    <!-- List of All Users  -->\r\n  \r\n    <table class=\"table table-bordered table-striped table-hover\">\r\n      <thead >\r\n        <tr>\r\n          <th class=\"text-center table-primary\">Emp Id</th>\r\n          <th class=\"text-center\">Emp First Name</th>\r\n          <th class=\"text-center\">Emp Last Name</th>\r\n          <th class=\"text-center\">Emp Address</th>\r\n          <th class=\"text-center\">Emp Phone</th>\r\n          <th class=\"text-center\">Edit</th>\r\n          <th class=\"text-center\">Delete</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let user of users; let i = index\">\r\n          <td class=\"table-info\">{{ i+1 }}</td>\r\n          <td class=\"table-warning\">{{ user.name }}</td>\r\n          <td class=\"table-success\">{{user.lname}}</td>\r\n          <td class=\"table-success\">{{user.address}}</td>\r\n          <td class=\"table-success\">{{user.phone}}</td>\r\n          <td  class=\"table-success\">\r\n            <!-- Show Edit User Form  -->\r\n            <button class=\"btn btn-dark \" (click)=\"showEditUserForm(user, template)\">\r\n              <span class=\"lnr lnr-pencil\"></span>\r\n            </button>\r\n          </td>\r\n           <td class=\"table-danger\">\r\n            <!-- Remove User  -->\r\n            <button class=\"btn btn-danger\" (click)=\"removeUser(user.id)\">\r\n              <span class=\"lnr lnr-trash\"></span>\r\n            </button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "<div class=\"container\">\n  <div class=\"jumbotron\">\n    <h
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container .row .col1 {\n  width: 50%;\n  margin: 0px; }\n\n.container .row .col2 {\n  width: 50%;\n  float: right;\n  margin: 1%; }\n\n.container tr {\n  text-align: center; }\n"
+module.exports = ".container tr {\n  text-align: center; }\n"
 
 /***/ }),
 
@@ -88,13 +88,15 @@ var AppComponent = /** @class */ (function () {
      * Create User
      * @param value     Name of User
      */
-    AppComponent.prototype.createUser = function (value) {
+    AppComponent.prototype.createUser = function (value, value2, value3, value4) {
         var _this = this;
-        this.apollo
-            .mutate({
+        this.apollo.mutate({
             mutation: _global_query__WEBPACK_IMPORTED_MODULE_3__["addUser"],
             variables: {
-                name: value
+                name: value,
+                lname: value2,
+                address: value3,
+                phone: value4
             },
             update: function (proxy, _a) {
                 var addUser = _a.data.addUser;
@@ -114,11 +116,10 @@ var AppComponent = /** @class */ (function () {
     };
     /**
      * Remove User
-     * @param id
+      * @param id
      */
     AppComponent.prototype.removeUser = function (id) {
-        this.apollo
-            .mutate({
+        this.apollo.mutate({
             mutation: _global_query__WEBPACK_IMPORTED_MODULE_3__["removeUser"],
             variables: {
                 id: id
@@ -147,6 +148,9 @@ var AppComponent = /** @class */ (function () {
      */
     AppComponent.prototype.showEditUserForm = function (user, template) {
         this.name = user.name;
+        this.lname = user.lname;
+        this.address = user.address;
+        this.phone = user.phone;
         this.user = user;
         this.modalRef = this.modalService.show(template);
     };
@@ -161,7 +165,10 @@ var AppComponent = /** @class */ (function () {
             mutation: _global_query__WEBPACK_IMPORTED_MODULE_3__["updateUser"],
             variables: {
                 id: this.user.id,
-                name: user
+                name: user,
+                lname: user,
+                address: user,
+                phone: user,
             },
             update: function (proxy, _a) {
                 var updateUser = _a.data.updateUser;
@@ -197,6 +204,9 @@ var AppComponent = /** @class */ (function () {
     // Open Modal
     AppComponent.prototype.openModal = function (template) {
         this.name = '';
+        this.lname = '';
+        this.address = '';
+        this.phone = '';
         this.user = {};
         this.modalRef = this.modalService.show(template);
     };
@@ -302,10 +312,10 @@ var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || func
     return cooked;
 };
 
-var addUser = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  mutation addUser($name: String!) {\n    addUser(name: $name) {\n      id\n      name\n    }\n  }"], ["\n  mutation addUser($name: String!) {\n    addUser(name: $name) {\n      id\n      name\n    }\n  }"])));
-var Users = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query {\n    users{\n      id\n      name\n    }\n  }"], ["\n  query {\n    users{\n      id\n      name\n    }\n  }"])));
-var removeUser = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  mutation removeUser($id: String!) {\n    removeUser(id: $id) {\n      id\n      name\n    }\n  }"], ["\n  mutation removeUser($id: String!) {\n    removeUser(id: $id) {\n      id\n      name\n    }\n  }"])));
-var updateUser = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  mutation updateUser($id: String!, $name: String!) {\n    updateUser(id: $id, name: $name) {\n      id\n      name\n    }\n  }"], ["\n  mutation updateUser($id: String!, $name: String!) {\n    updateUser(id: $id, name: $name) {\n      id\n      name\n    }\n  }"])));
+var addUser = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  mutation addUser($name: String!, $lname: String!, $address: String!, $phone: String!) {\n    addUser(name: $name, lname: $lname, address: $address, phone: $phone) {\n      id\n      name\n      lname\n      address\n      phone\n      \n    }\n  }"], ["\n  mutation addUser($name: String!, $lname: String!, $address: String!, $phone: String!) {\n    addUser(name: $name, lname: $lname, address: $address, phone: $phone) {\n      id\n      name\n      lname\n      address\n      phone\n      \n    }\n  }"])));
+var Users = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query {\n    users{\n      id\n      name\n      lname\n      address\n      phone\n    }\n  }"], ["\n  query {\n    users{\n      id\n      name\n      lname\n      address\n      phone\n    }\n  }"])));
+var removeUser = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  mutation removeUser($id: String!) {\n    removeUser(id: $id) {\n      id\n      name\n      lname\n      address\n      phone\n    }\n  }"], ["\n  mutation removeUser($id: String!) {\n    removeUser(id: $id) {\n      id\n      name\n      lname\n      address\n      phone\n    }\n  }"])));
+var updateUser = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  mutation updateUser($id: String!, $name: String!, $lname: String!, $address: String!, $phone:String!) {\n    updateUser(id: $id, name: $name, lname: $lname, address: $address, phone: $phone) {\n      id\n      name\n      lname\n      address\n      phone\n    }\n  }"], ["\n  mutation updateUser($id: String!, $name: String!, $lname: String!, $address: String!, $phone:String!) {\n    updateUser(id: $id, name: $name, lname: $lname, address: $address, phone: $phone) {\n      id\n      name\n      lname\n      address\n      phone\n    }\n  }"])));
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
 
 
@@ -341,8 +351,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-//const uri = 'http://localhost:4000/graphql'; // Development
-var uri = 'https://graphql-demo-vijaychauhanssn.herokuapp.com/graphql-demo'; // Production
+// const uri = 'http://localhost:4000/graphql'; // Development
+var uri = 'https://graphql-demo-vijaychauhanssn.herokuapp.com/graphql'; // Production
 var GraphQLModule = /** @class */ (function () {
     function GraphQLModule(apollo, httpLink) {
         // create Apollo
@@ -423,7 +433,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Prateek\graphql-demo\client\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Anurag Thakur\graphql-demo\client\src\main.ts */"./src/main.ts");
 
 
 /***/ })

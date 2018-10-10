@@ -2,17 +2,17 @@
   "name": "graphql-nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "keywords": [
     "nodejs",
     "express",
     "graphql"
   ],
-  "author": "Afroza Yasmin",
+  "author": "Vijay Chauhan",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.1",

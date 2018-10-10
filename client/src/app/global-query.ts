@@ -7,10 +7,14 @@
 import gql from 'graphql-tag';
 
 export const addUser = gql`
-  mutation addUser($name: String!) {
-    addUser(name: $name) {
+  mutation addUser($name: String!, $lname: String!, $address: String!, $phone: String!) {
+    addUser(name: $name, lname: $lname, address: $address, phone: $phone) {
       id
       name
+      lname
+      address
+      phone
+      
     }
   }`;
 
@@ -19,6 +23,9 @@ export const Users = gql`
     users{
       id
       name
+      lname
+      address
+      phone
     }
   }`;
 
@@ -27,13 +34,19 @@ export const removeUser = gql`
     removeUser(id: $id) {
       id
       name
+      lname
+      address
+      phone
     }
   }`;
 
 export const updateUser = gql`
-  mutation updateUser($id: String!, $name: String!) {
-    updateUser(id: $id, name: $name) {
+  mutation updateUser($id: String!, $name: String!, $lname: String!, $address: String!, $phone:String!) {
+    updateUser(id: $id, name: $name, lname: $lname, address: $address, phone: $phone) {
       id
       name
+      lname
+      address
+      phone
     }
   }`;

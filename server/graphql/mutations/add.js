@@ -9,7 +9,17 @@ exports.add = {
   args: {
     name: {
       type: new GraphQLNonNull(GraphQLString),
+    },
+    lname: {
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    address: {
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    phone:{
+      type:new GraphQLNonNull(GraphQLString),
     }
+
   },
   resolve(root, params) {
     const uModel = new UserModel(params);

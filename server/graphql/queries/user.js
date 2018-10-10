@@ -7,6 +7,9 @@ var userType = require('../types/user').userType;
 // Query
 exports.queryType = new GraphQLObjectType({
   name: 'Query',
+  lname:'Query',
+  address:'Query',
+  phone:'Query',
   fields: function () {
     return {
       users: {

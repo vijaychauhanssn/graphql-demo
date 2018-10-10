@@ -12,12 +12,36 @@ exports.update = {
     },
     name: {
       type: new GraphQLNonNull(GraphQLString),
+    },
+    id:{
+      lname:'id',
+      type:new GraphQLNonNull(GraphQLString)
+    },
+    lname:{
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    id:{
+      address:'id',
+      type:new GraphQLNonNull(GraphQLString)
+    },
+    address:{
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    id:{
+      phone:'id',
+      type:new GraphQLNonNull(GraphQLString)
+    },
+    phone:{
+      type: new GraphQLNonNull(GraphQLString),
     }
   },
   resolve(root, params) {
     return UserModel.findByIdAndUpdate(
       params.id,
       { $set: { name: params.name } },
+      { $set: { lname: params.lname } },
+      { $set: { address: params.address } },
+      { $set: { phone: params.phone } },
       { new: true }
     )
       .catch(err => new Error(err));
