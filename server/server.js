@@ -13,6 +13,12 @@ app.use('/graphql', cors(), graphqlHTTP({
   rootValue: global,
   graphiql: true
 }));
+app.use(express.static(__dirname + '/public'));
+
+// views is directory for all template files
+
+// CONNECT TO MONGODB SERVER
+mongoose.connect(process.env.MONGOLAB_PINK_URI);
 
 // Up and Running at Port 4000
 app.listen(process.env.PORT || 4000, () => {

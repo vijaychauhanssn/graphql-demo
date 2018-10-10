@@ -1,21 +1,25 @@
 <div class="container">
-  <div class="col-md-6">
-    <div class="row">
-      <div class="col1">
-        <h3>Users List</h3>
+  <div class="jumbotron">
+    <h1>GraphQL, NodeJs, Express, MongoDB, Angular (v6)</h1>      
+  </div>
+  <div class="col-md-12">
+    <div class="row pb-5">
+      <div class="col-md-6 float-left">
+        <h3>Employee List</h3>
       </div>
-      <div class="col2">
+      <div class="col-md-6 float-right">
         <!-- Create New User  -->
         <button type="button" class="btn btn-primary pull-right" (click)="openModal(template)">
-          Create New User
+        Add Employee  <span class="lnr lnr-plus-circle"></span>
         </button>
+
       </div>
     </div>
 
     <!-- Modal Template of New User Form -->
     <ng-template #template>
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Create New User</h4>
+        <h4 class="modal-title pull-left">Create New Employee</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -33,26 +37,30 @@
     </ng-template>
 
     <!-- List of All Users  -->
+  
     <table class="table table-bordered table-striped table-hover">
-      <thead>
+      <thead >
         <tr>
-          <th class="text-center">ID</th>
-          <th class="text-center">Name</th>
-          <th class="text-center">Actions</th>
+          <th class="text-center table-primary">Emp Id</th>
+          <th class="text-center">Emp First</th>
+          <th class="text-center">Edit</th>
+          <th class="text-center">Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let user of users; let i = index">
-          <td>{{ i+1 }}</td>
-          <td>{{ user.name }}</td>
-          <td>
+          <td class="table-info">{{ i+1 }}</td>
+          <td class="table-warning">{{ user.name }}</td>
+          <td  class="table-success">
             <!-- Show Edit User Form  -->
-            <button class="btn btn-info" (click)="showEditUserForm(user, template)">
-              <i class="fa fa-edit"></i>
+            <button class="btn btn-dark " (click)="showEditUserForm(user, template)">
+              <span class="lnr lnr-pencil"></span>
             </button>
+          </td>
+           <td class="table-danger">
             <!-- Remove User  -->
             <button class="btn btn-danger" (click)="removeUser(user.id)">
-              <i class="fa fa-minus"></i>
+              <span class="lnr lnr-trash"></span>
             </button>
           </td>
         </tr>
