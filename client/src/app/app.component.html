@@ -5,7 +5,6 @@
   <div class="col-md-12">
     <div class="row pb-5">
       <div class="col-md-6 float-left">
-        <h3>Employee List</h3>
       </div>
       <div class="col-md-6 float-right">
         <!-- Create New User  -->
@@ -43,7 +42,7 @@
             <input type="number" class="form-control" name="phone"  placeholder="Phone" [(ngModel)]="phone">
           </div>
           <button type="button" class="btn btn-primary" *ngIf="!user.id" (click)="createUser(name, lname, address, phone);">Create</button>
-          <button type="button" class="btn btn-default" *ngIf="user.id" (click)="updateUser(name, lname, address, phone);">Update</button>
+          <button type="button" class="btn btn-default" *ngIf="user.id" (click)="updateUser(name);">Update</button>
         </form>
       </div>
     </ng-template>

@@ -102,15 +102,14 @@ export class AppComponent {
    * @param user 
    */
   updateUser(user) {
-    this.apollo
-      .mutate({
+    this.apollo.mutate({
         mutation: Query.updateUser,
         variables: {
           id: this.user.id,
           name: user,
           lname: user,
           address: user,
-          phone: user,
+           phone: user,
         },
         update: (proxy, { data: { updateUser } }) => {
           // Read the data from our cache for this query.
@@ -119,6 +118,10 @@ export class AppComponent {
           var index = data.users.map(function (x) { return x.id; }).indexOf(this.user.id);
 
           data.users[index].name = user;
+          data.users[index].lname = user;
+          data.users[index].address = user;
+          data.users[index].phone = user;
+
 
           // Write our data back to the cache.
           proxy.writeQuery({ query: Query.Users, data });
@@ -136,7 +139,7 @@ export class AppComponent {
    * Get All Users
    * ----------------------------------------------------
    * @method getUsers
-   */
+   */ 
   getUsers() {
     this.apollo.watchQuery({ query: Query.Users })
       .valueChanges
